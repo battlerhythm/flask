@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, url_for
+
 app = Flask(__name__)
 
 
@@ -54,4 +55,14 @@ def about():
 
 
 if __name__ == '__main__':
+    
+    # URL Building
+
+    with app.test_request_context():
+        print(url_for('index'))
+        print(url_for('hello_world'))
+        print(url_for('hello_world', next='/'))
+        print(url_for('show_user_profile', username='John Doe'))
+
+
     app.run()
