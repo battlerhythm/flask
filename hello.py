@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, request, render_template
 
 app = Flask(__name__)
 
@@ -54,6 +54,35 @@ def about():
     return 'The about page'
 
 
+# HTTP Methods
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return 'do_the_login()'
+    else:
+        return 'show_the_login_form()'
+
+    # /application.py
+    # /templates
+    #     /hello.html
+
+
+# Rendering Templates
+
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', name=name)
+
+    # >>> from flask import Markup
+    # >>> Markup('<strong>Hello %s!</strong>') % '<blink>hacker</blink>'
+    # Markup(u'<strong>Hello &lt;blink&gt;hacker&lt;/blink&gt;!</strong>')
+    # >>> Markup.escape('<blink>hacker</blink>')
+    # Markup(u'&lt;blink&gt;hacker&lt;/blink&gt;')
+    # >>> Markup('<em>Marked up</em> &raquo; HTML').striptags()
+    # u'Marked up \xbb HTML'
+
 if __name__ == '__main__':
     
     # URL Building
@@ -63,6 +92,12 @@ if __name__ == '__main__':
         print(url_for('hello_world'))
         print(url_for('hello_world', next='/'))
         print(url_for('show_user_profile', username='John Doe'))
+
+
+    # Static Files
+
+    with app.test_request_context():
+        print(url_for('static', filename='style.css'))
 
 
     app.run()
