@@ -8,4 +8,4 @@ install:
   - 'pipenv sync'
 script: 
   - 'python hello.py'
-after_success:
+after_success: 
