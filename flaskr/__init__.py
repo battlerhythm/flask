@@ -29,6 +29,9 @@ def create_app(test_config=None):
     def hello():
         return 'Hello, World!'
 
+    from . import db
+    db.init_app(app)
+
     return app
 
 # __init__.py serves double duty:
@@ -66,3 +69,11 @@ def create_app(test_config=None):
 # $env:FLASK_APP = "flaskr"
 # $env:FLASK_ENV = "development"
 # flask run
+
+# Initialize the Database File
+# Now that init-db has been registered with the app, 
+# it can be called using the flask command, similar to the run command from the previous page.
+# Run the init-db command:
+# flask init-db
+# Initialized the database.
+# There will now be a flaskr.sqlite file in the instance folder in your project.
