@@ -5,8 +5,6 @@
 - Python 3.7
 - pipenv
 
-## Quick Start
-1. `git clone https://github.com/battlerhythm/flask-tutorial.git`
-2. `cd flask-tutorial`
-3. `pipenv shell`
-4. `python hello.py`
+## Official Tutorial Page
+
+[http://flask.pocoo.org/docs/1.0/tutorial/](http://flask.pocoo.org/docs/1.0/tutorial/)
